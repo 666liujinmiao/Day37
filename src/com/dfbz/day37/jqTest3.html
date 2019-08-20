@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件绑定与解绑</title>
+    <script type="text/javascript" src="jq/jquery-3.3.1.min.js"></script>
+    <style>
+        #d {
+            width: 300px;
+            height: 200px;
+            border: 1px solid deeppink;
+        }
+    </style>
+</head>
+<body>
+<input type="button" value="绑定事件" id="btn1">
+<!--<input type="button" value="解绑事件" id="btn2">-->
+<br><br>
+<input type="text" id="txt" value="得到/失去焦点事件">
+<!--<input type="text" id="txt2" value="解绑得到/失去焦点事件">-->
+<br><br>
+<!--<input type="button" id="btn3" value="解绑鼠标移入/鼠标移出事件">-->
+<div id="d"></div>
+</body>
+<script>
+    //1.绑定多个事件的普通方式
+    //单击事件/双击事件
+    $("#btn1").on("click",function () {
+        $("#d").css("backgroundColor", "pink");
+         console.log("单击事件");
+    })
+    $("#btn1").on("dblclick", function () {
+        $("#d").css("backgroundColor", "orange");
+        console.log("双击事件");
+    })
+
+    //2.绑定多个事件的切换函数方式:hover(over[,out])
+    //鼠标移入事件/鼠标移出事件
+    $("#d").hover(function () {
+        $("#d").css("backgroundColor", "blue");
+        console.log("鼠标移入事件");
+    }, function () {
+        $("#d").css("backgroundColor", "red");
+        console.log("鼠标移出事件");
+    });
+
+    //3.绑定多个事件的链式方式
+    //得到焦点事件/失去焦点事件
+    $("#txt").on("focus", function () {
+        $("#txt").css("backgroundColor", "orange");
+        console.log("得到焦点事件");
+    }).on("blur", function () {
+        $("#txt").css("backgroundColor", "pink");
+        console.log("失去焦点事件");
+    })
+    /*//解绑单击事件
+    $("#btn2").off("click");
+    //解绑双击事件
+    $("#btn2").off("dblclick");
+    //解绑鼠标移入事件
+    $("#btn3").off("mouseover");
+    //解绑鼠标移出事件
+    $("#btn3").off("mouseout");
+    //解绑得到焦点事件
+    $("#txt2").off("focus");
+    //解绑失去焦点事件
+    $("#txt2").off("blur");
+*/
+</script>
+</html>

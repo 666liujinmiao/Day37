@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery动画</title>
+    <style>
+        #div {
+            width: 300px;
+            height: 200px;
+            border: 1px solid deeppink;
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+<input type="button" id="btn1" value="显示div">
+<input type="button" id="btn2" value="隐藏div">
+<input type="button" id="btn3" value="切换隐藏显示">
+<br><br>
+<input type="button" id="btn4" value="div向下滑">
+<input type="button" id="btn5" value="div向上滑">
+<input type="button" id="btn6" value="切换滑动">
+<br><br>
+<input type="button" id="btn7" value="淡入显示">
+<input type="button" id="btn8" value="淡出隐藏">
+<input type="button" id="btn9" value="切换">
+<br><br>
+<div id="div"></div>
+</body>
+<script type="text/javascript" src="jq/jquery-3.3.1.min.js"></script>
+<script>
+    //给show绑定点击事件
+    $("#btn1").click(function () {
+        $("#div").show(100,function () {
+            alert("显示成功");
+        });
+    })
+    //给hide绑定点击事件
+    $("#btn2").click(function () {
+        $("#div").hide(100,function () {
+            alert("隐藏成功");
+        });
+    })
+    //是隐藏就显示，是显示就隐藏
+    $("#btn3").click(function () {
+        $("#div").toggle(100,function () {
+            alert("切换成功");
+        });
+    })
+    //div向下滑动
+    $("#btn4").click(function () {
+        $("#div").slideDown(200,function () {
+            alert("向下滑动");
+        });
+    })
+    //div向上滑动
+    $("#btn5").click(function () {
+        $("#div").slideUp(200,function () {
+            alert("向上滑动");
+        });
+    })
+    //div切换滑动
+    $("#btn6").click(function () {
+        $("#div").slideToggle(200,function () {
+            alert("切换滑动");
+        });
+    })
+    //div淡入显示
+    $("#btn7").click(function () {
+        $("#div").fadeIn(300,function () {
+            alert("淡入显示");
+        });
+    })
+    //div淡出隐藏
+    $("#btn8").click(function () {
+        $("#div").fadeOut(300,function () {
+            alert("淡出隐藏");
+        });
+    })
+    //div切换淡入显示淡出隐藏
+    $("#btn9").click(function () {
+        $("#div").fadeToggle(300,function () {
+            alert("切换");
+        });
+    })
+</script>
+</html>

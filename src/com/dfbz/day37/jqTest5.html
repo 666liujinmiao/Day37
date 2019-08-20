@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>抽奖</title>
+    <script src="jq/jquery-3.3.1.min.js"></script>
+    <style>
+        div {
+            width: 800px;
+            height: 400px;
+            margin: 0px auto;
+        }
+
+        input {
+            display: block;
+            margin: 0px auto;
+        }
+    </style>
+</head>
+<body>
+<div style="height: 270px"></div>
+<div>
+    <img src="image/1.jpg" width="100%" height="100%" id="img">
+</div>
+<br><br>
+<input type="button" value="开始" id="start">
+<input type="button" value="暂停" id="pause">
+</body>
+<script>
+    //存储图片
+    var imgs = [
+        'image/1.jpg',
+        'image/2.jpg',
+        'image/3.jpg',
+        'image/4.jpg',
+        'image/5.jpg'
+    ];
+    //定时器
+    var time = null;
+
+    var index = -1
+    $("#pause").prop("disabled", "true");
+    $("#start").click(function () {
+        //点击启动按钮,启动按钮应该变为灰色，激活暂停按钮
+        $("#start").prop("disabled", "true");
+        $("#pause").prop("disabled", "");
+
+        time = setInterval(function () {
+            index++;
+            index=index>imgs.length-1?0:index;
+            $("#img").attr("src",imgs[index]);
+        }, 100);
+    })
+    $("#pause").click(function () {
+        //点击暂停按钮,暂停按钮应该变为灰色，激活启动按钮
+        $("#start").prop("disabled", "");
+        $("#pause").prop("disabled", "true");
+
+        $("#img").attr("src",imgs[index]);
+        clearInterval(time);
+
+    })
+</script>
+</html>

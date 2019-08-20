@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>对jQuery全局进行方法扩展 代码</title>
+    <script src="jq/jquery-3.3.1.min.js"></script>
+    <script>
+        $.extend({
+            min: function (a, b) {
+                return a < b ? a : b;
+            },
+            max:function (a,b) {
+                return a>b?a:b;
+            }
+        })
+        var min=$.min(6,8);
+        alert("6和8的最小值为："+min);
+        var max=$.max(6,8);
+        alert("6和8的最大值为："+max);
+    </script>
+</head>
+<body>
+</body>
+</html>

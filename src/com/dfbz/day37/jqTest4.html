@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>广告的自动显示与隐藏</title>
+    <script src="jq/jquery-3.3.1.min.js"></script>
+    <style>
+        #content {
+            text-align: center;
+            font-size: larger;
+            color: chocolate;
+            width: 1100px;
+            height: 500px;
+            margin:0 auto;
+        }
+        #ad{
+            width: 1100px;
+            height: 500px;
+            margin:0 auto;
+        }
+    </style>
+
+</head>
+<body>
+<!-- 整体的DIV -->
+<div style="background-color: pink">
+    <!-- 广告DIV
+    display,控制元素显示与隐藏
+    display:none;隐藏
+    display:block;显示
+    -->
+    <div id="ad" style="display: none">
+        <img src="image/1.jpg" style="width: 100%" height="100%">
+    </div><br/>
+    <!-- 下方正文部分 -->
+    <div id="content">
+        欢迎观看我们的广告
+    </div>
+</div>
+</body>
+<script>
+    $(function () {
+        //要求：页面加载后11秒后开广告3秒向下滑动显示，广告停留5秒，之后广告3秒向上滑动隐藏
+        // 使用定时器3秒后执行滑动显示动画
+        var count = 1;
+        setInterval(function () {
+            //让广告向下滑动显示,动画执行3秒
+            $("#ad img").attr("src", "image/" + count + ".jpg");
+            $("#ad").slideDown(3000, function () {
+                //广告停留5秒
+                setTimeout(function () {
+                    //向上滑动隐藏，动画执行3秒
+                    $("#ad").slideUp(3000)
+                }, 5000)
+            })
+            count++;
+            if (count == 5) {
+                count = 1;
+            }
+        }, 11000);
+    })
+</script>
+</html>

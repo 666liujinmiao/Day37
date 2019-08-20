@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>对jQuery对象进行方法扩展 代码</title>
+    <script src="jq/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+<input type="button" id="btn-check" value="点击选中复选框" onclick="checkFn()">
+<input type="button" id="btn-uncheck" value="点击选中复选框" onclick="uncheckFn()">
+<br><br>
+<input type="checkbox" value="football">足球
+<input type="checkbox" value="basketball">篮球
+<input type="checkbox" value="volleyball">排球
+</body>
+<script>
+    $.fn.extend({
+        //对jq对象扩展
+        //扩展check方法，让jq对象的checked属性处于选中状态
+        check: function () {
+            //对jq对象扩展，this就是当前jq对象（只有这里的this是jq对象，其他地方的this都是js对象）
+            this.prop("checked", "true");
+        },
+        //扩展uncheck方法，让jq对象的checked属性处于不选中状态
+        uncheck: function () {
+            this.prop("checked", "");
+        }
+    });
+    function checkFn(){
+        $("input:checkbox").check();
+    }
+    function uncheckFn() {
+        $("input[type=checkbox]").uncheck();
+    }
+</script>
+</html>

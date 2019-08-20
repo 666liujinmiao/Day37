@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery的遍历</title>
+</head>
+<body>
+<ul id="cities">
+    <li>南昌</li>
+    <li>九江</li>
+    <li>赣州</li>
+    <li>上饶</li>
+    <li>景德镇</li>
+</ul>
+</body>
+<script type="text/javascript" src="jq/jquery-3.3.1.min.js"></script>
+<script>
+    /*
+    遍历JQuery数组有如下4种方式：
+    1. 元素for循环方式(JS自带)
+    2. JQ对象的each方式遍历
+    3. JQ全局each方式遍历
+    4. JQ3.0新特性 for ... of 方式(JS自带)
+    */
+    //1. 元素for循环方式(JS自带)
+    var lis = $("#cities li");
+    for (var i = 0; i < lis.length; i++) {
+        console.log("1.城市名：" + $(lis[i]).text());
+    }
+    console.log("-------------------");
+    //2. JQ对象的each方式遍历
+    lis.each(function (index, element) {
+        console.log("2.城市名：" + $(element).text());
+    })
+    console.log("-------------------");
+    //3. JQ全局each方式遍历
+    $.each(lis, function (index, element) {
+        console.log("3.城市名：" + $(element).text());
+    })
+    console.log("-------------------");
+    //4. JQ3.0新特性 for ... of 方式(JS自带)
+    for(var li of lis){
+        console.log("4.城市名：" + $(li).text());
+    }
+
+
+</script>
+</html>
